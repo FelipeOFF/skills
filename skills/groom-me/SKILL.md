@@ -1,6 +1,6 @@
 ---
 name: groom-me
-description: Runs a short, NON-TECHNICAL grooming interview to confirm intended behavior BEFORE any business rule changes. Use this proactively whenever a code change would add or alter business logic — an if/else/switch, a guard clause, a validation, a calculation, an eligibility/pricing/permission/discount check, a state transition, a threshold or limit, or anything in the domain/business layer. Trigger it even when the user never says "groom" or "grill": if the change alters WHAT the software decides, allows, or charges, stop and groom first. Also runs on demand via /groom-me. Skip only for pure refactors, formatting, renames, tests, or docs that do not change behavior.
+description: Runs a short, NON-TECHNICAL grooming interview to confirm intended behavior BEFORE any business rule changes. Use this proactively whenever a code change would add or alter business logic — an if/else/switch, a guard clause, a validation, a calculation, an eligibility, pricing, permission or discount check, a state transition, a threshold or limit, or anything in the domain or business layer. Trigger it even when the user never says groom or grill — if the change alters WHAT the software decides, allows, or charges, stop and groom first. Also runs on demand via /groom-me. Skip only for pure refactors, formatting, renames, tests, or docs that do not change behavior.
 ---
 
 # groom-me
