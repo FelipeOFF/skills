@@ -1,0 +1,74 @@
+# L2 — standard (L1 + thresholds mais apertados + rules amplas + anti-patterns)
+#
+# Cole este bloco no analysis_options.yaml do projeto.
+# Wiring abaixo é o LEGACY (Dart < 3.9): analyzer.plugins + dart_code_linter no topo.
+#
+# Equivalente para Dart >= 3.9 (recomendado): troque o bloco analyzer.plugins
+# pela forma top-level `plugins:` com `diagnostics:` (map id->true), mantendo as
+# mesmas metrics/metrics-exclude. Ex.:
+#   plugins:
+#     dart_code_linter:
+#       diagnostics:
+#         avoid-non-null-assertion: true
+#         no-magic-number: true
+# Caveat: rules que exigem config obrigatória (avoid-banned-imports, ban-name)
+# NÃO são suportadas pelo protocolo plugins:/diagnostics: — use o legacy.
+#
+# L2 aperta moderadamente os thresholds, amplia a lista de rules e ativa os 2
+# anti-patterns. Lembre: anti-patterns NÃO têm threshold próprio — eles se apoiam
+# nas métricas (long-method usa source-lines-of-code; long-parameter-list usa
+# number-of-parameters), que precisam estar declaradas em `metrics:` para disparar.
+
+analyzer:
+  plugins:
+    - dart_code_linter
+
+dart_code_linter:
+  metrics:
+    cyclomatic-complexity: 15
+    number-of-parameters: 4
+    maximum-nesting-level: 4
+    source-lines-of-code: 50
+    number-of-methods: 10
+    lines-of-code: 100
+  metrics-exclude:
+    - test/**
+  rules:
+    # base L1
+    - avoid-dynamic
+    - avoid-unused-parameters
+    - no-empty-block
+    - no-equal-then-else
+    - newline-before-return
+    - avoid-double-slash-imports
+    - avoid-duplicate-exports
+    - avoid-redundant-async
+    - avoid-unnecessary-conditionals
+    - binary-expression-operand-order
+    - double-literal-format
+    - format-comment
+    - no-boolean-literal-compare
+    - prefer-conditional-expressions
+    - prefer-first
+    - prefer-immediate-return
+    - prefer-iterable-of
+    - prefer-last
+    - prefer-trailing-comma
+    # rules adicionais do L2 (qualidade / correção, várias manuais)
+    - avoid-nested-conditional-expressions
+    - avoid-non-null-assertion
+    - avoid-passing-async-when-sync-expected
+    - avoid-throw-in-catch-block
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - no-boolean-literal-compare
+    - no-equal-arguments
+    - no-magic-number
+    - prefer-async-await
+    - prefer-match-file-name
+    - prefer-moving-to-variable
+    - prefer-single-quotes
+  anti-patterns:
+    - long-method
+    - long-parameter-list

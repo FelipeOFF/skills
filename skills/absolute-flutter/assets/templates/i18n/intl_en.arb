@@ -1,0 +1,61 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Example App",
+  "@appTitle": {
+    "description": "Application title shown in the OS task switcher and the app bar."
+  },
+
+  "ok": "OK",
+  "@ok": {
+    "description": "Generic affirmative button label."
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Generic dismissive button label."
+  },
+
+  "next": "Next",
+  "@next": {
+    "description": "Advance-to-next-step button label."
+  },
+
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Generic confirmation button label."
+  },
+
+  "welcomeTitle": "Welcome",
+  "@welcomeTitle": {
+    "description": "Heading shown on the first screen."
+  },
+
+  "genericErrorTitle": "Something went wrong",
+  "@genericErrorTitle": {
+    "description": "Title for an unexpected/unspecified error state."
+  },
+
+  "greeting": "Hello, {name}!",
+  "@greeting": {
+    "description": "Personalized greeting addressing the user by name.",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Alex"
+      }
+    }
+  },
+
+  "itemsCount": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
+  "@itemsCount": {
+    "description": "Count of items, pluralized via ICU.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact",
+        "example": "3"
+      }
+    }
+  }
+}

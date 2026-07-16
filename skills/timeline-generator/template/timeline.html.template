@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: rgba(255,255,255,.04);
+    --text: #f0f6fc;
+    --text-muted: #8b949e;
+    --border: #30363d;
+    --accent: #38bdf8;
+    --accent-2: #a78bfa;
+    --warn: #fbbf24;
+    --danger: #e63946;
+    --ok: #3fb950;
+  }
+  * { box-sizing: border-box }
+  html, body { background: var(--bg); color: var(--text); margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px; line-height: 1.45;
+  }
+  html, body { min-height: 100%; }
+  .page { padding: 14px clamp(10px, 1.6vw, 22px); max-width: 100%; margin: 0 auto }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); font-weight: 700 }
+  h1 { font-size: clamp(18px, 2vw, 26px); font-weight: 800; line-height: 1.15; margin: 4px 0 8px }
+  h1 em { font-style: normal; color: var(--accent) }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; color: var(--text-muted); margin-bottom: 8px }
+  .meta-row strong { color: var(--text) }
+  .links-row { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-muted); margin-bottom: 14px }
+  .links-row a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed currentColor }
+  .links-row a:hover { filter: brightness(1.2) }
+
+  .toolbar { display: flex; gap: 8px; margin-bottom: 14px; justify-content: flex-end; flex-wrap: wrap }
+  .tbtn {
+    background: rgba(167,139,250,.15); color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,.4); border-radius: 6px;
+    padding: 5px 12px; font-size: 11px; font-weight: 700;
+    cursor: pointer; transition: filter .15s; font-family: inherit;
+  }
+  .tbtn:hover { filter: brightness(1.2) }
+  .tbtn.danger { background: rgba(230,57,70,.18); color: #ff8a8a; border-color: rgba(230,57,70,.4) }
+
+  .drag-banner {
+    background: linear-gradient(90deg, rgba(167,139,250,.2), rgba(56,189,248,.2));
+    border: 1px solid rgba(167,139,250,.5); border-radius: 8px;
+    padding: 6px 12px; font-size: 11px; color: #c4b5fd;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+  }
+  .drag-banner strong { color: #fff }
+  .drag-banner code { background: rgba(0,0,0,.3); padding: 1px 6px; border-radius: 4px; font-size: 11px }
+
+  /* GANTT */
+  .gantt-wrap { width: 100%; overflow-x: auto; padding-bottom: 4px; position: relative }
+  .gantt-inner { width: 100%; min-width: 720px; position: relative }
+  .grid-row { display: grid; gap: 0 }
+  .ms-header { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-align: center; padding-bottom: 3px; border-bottom: 2px solid currentColor }
+  .month-header { font-size: 9px; color: var(--text-muted); letter-spacing: .06em; text-align: center }
+  .week-header { font-size: 10px; color: var(--text-muted); text-align: center }
+  .week-header.current { color: var(--accent); font-weight: 700 }
+  .week-header .wd { opacity: .6; font-size: 9px; font-weight: 400 }
+
+  .lane-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px }
+  .lane-label { width: 110px; min-width: 110px; font-size: 11px; font-weight: 700; text-align: right }
+  .lane-track { flex: 1; min-width: 0; height: 46px }
+  .gantt-lane { display: grid; height: 100%; gap: 0; padding: 2px 0 }
+  .gantt-lane > * { box-shadow: inset -1px 0 0 rgba(0,0,0,.55); min-height: 32px }
+  .gantt-lane > *:last-child { box-shadow: none }
+
+  .gantt-bar {
+    position: relative; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 3px 8px; font-size: 11px; font-weight: 700; color: #fff;
+    text-decoration: none; transition: filter .15s;
+    user-select: none; cursor: grab; overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0,0,0,.4);
+    min-height: 36px;
+  }
+  .gantt-bar:hover { filter: brightness(1.15) }
+  .gantt-bar.moving { cursor: grabbing; filter: brightness(1.2); z-index: 50 }
+  .gantt-bar.resizing { cursor: ew-resize; filter: brightness(1.2); z-index: 50 }
+  .gantt-bar .gh { position: absolute; top: 0; bottom: 0; width: 8px; background: transparent; cursor: ew-resize; z-index: 10; pointer-events: auto }
+  .gantt-bar .gh-l { left: -2px }
+  .gantt-bar .gh-r { right: -2px }
+  .gantt-bar .gh:hover { background: rgba(255,255,255,.25); border-radius: 4px }
+  .gantt-bar .del {
+    position: absolute; top: 2px; right: 2px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(0,0,0,.55); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; line-height: 1; cursor: pointer;
+    opacity: 0; transition: opacity .12s, background .12s;
+    z-index: 20; pointer-events: auto; user-select: none;
+  }
+  .gantt-bar:hover .del { opacity: .85 }
+  .gantt-bar .del:hover { opacity: 1; background: var(--danger) }
+  .gantt-bar .lbl {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    text-align: center;
+    line-height: 1.15;
+    width: 100%;
+  }
+  .gantt-bar[data-narrow="1"] .lbl { font-size: 9px; -webkit-line-clamp: 2; line-clamp: 2 }
+  .gantt-bar[data-narrow="2"] .lbl { font-size: 8px; -webkit-line-clamp: 1; line-clamp: 1 }
+  .gantt-bar .stat { position: absolute; top: -1px; right: 2px; font-size: 9px; opacity: .85 }
+
+  .empty-cell { background: var(--bg-card); border-radius: 8px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-muted) }
+
+  /* Today marker — linha tracejada translucent atrás das barras; label sólido no topo */
+  #today-marker {
+    position: absolute; top: -8px; bottom: -8px; width: 1px;
+    background: repeating-linear-gradient(to bottom, rgba(251,191,36,.55) 0 4px, transparent 4px 8px);
+    pointer-events: none; z-index: 1; mix-blend-mode: screen;
+  }
+  #today-marker .tlbl {
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    background: var(--warn); color: #000; padding: 2px 8px;
+    border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    z-index: 100;
+  }
+
+  /* Tooltip */
+  #drag-tooltip {
+    position: fixed; pointer-events: none; z-index: 9999;
+    background: #0d1117; border: 1px solid rgba(167,139,250,.5);
+    color: #fff; padding: 6px 10px; border-radius: 6px;
+    font-size: 11px; font-weight: 600; line-height: 1.4;
+    box-shadow: 0 6px 20px rgba(0,0,0,.5);
+    display: none; white-space: nowrap;
+  }
+  #drag-tooltip .tt-range { color: #c4b5fd; font-size: 10px; font-weight: 500; margin-top: 2px }
+
+  /* Pins */
+  .pins-wrap { position: relative; height: 76px; margin-top: 4px; width: 100% }
+  .pin {
+    position: absolute; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+  }
+  .pin .pdot { border-radius: 999px; padding: 2px 7px; font-size: 10px; font-weight: 800; white-space: nowrap }
+  .pin .pline { width: 1px; height: 18px; opacity: .6 }
+  .pin .ptxt { border-radius: 6px; padding: 3px 7px; font-size: 9px; max-width: 110px; text-align: center; line-height: 1.25 }
+
+  /* Bottom panel: tasks in/next/done */
+  .bottom-panel { margin-top: 16px; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) }
+  .panel-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px }
+  .panel-card h3 { margin: 0 0 8px; font-size: 12px; font-weight: 800; display: flex; align-items: center; gap: 8px }
+  .panel-card.now { border-color: rgba(251,191,36,.5); background: rgba(251,191,36,.05) }
+  .panel-card.next { border-color: rgba(56,189,248,.4) }
+  .panel-card.done { border-color: rgba(63,185,80,.3); opacity: .85 }
+  .task-item { display: flex; gap: 8px; padding: 6px 0; border-top: 1px solid rgba(48,54,61,.5); font-size: 12px; line-height: 1.4 }
+  .task-item:first-of-type { border-top: none }
+  .task-item .tdot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0 }
+  .task-item .tbody { flex: 1 }
+  .task-item .tmeta { font-size: 10px; color: var(--text-muted); margin-top: 2px }
+  .task-item a { color: var(--accent); text-decoration: none; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: rgba(56,189,248,.12); border: 1px solid rgba(56,189,248,.3); margin-right: 4px }
+  .task-item a:hover { filter: brightness(1.2) }
+
+  .footer-note { margin-top: 14px; font-size: 10px; color: var(--text-muted); text-align: center; padding: 8px; border-top: 1px solid var(--border) }
+
+  /* Milestone cards */
+  .ms-section { margin: 36px 0 }
+  .ms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px }
+  .ms-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; cursor: grab; user-select: none; transition: border-color .15s, transform .15s }
+  .ms-card.dragging { opacity: .35; transform: scale(.97); cursor: grabbing }
+  .ms-card.drop-target { outline: 2px dashed rgba(167,139,250,.6); outline-offset: -2px }
+  .ms-card h4 { margin: 0 0 6px; font-size: 16px; font-weight: 800 }
+  .ms-card .ms-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 12px }
+  .ms-card .ms-bars { display: flex; flex-wrap: wrap; gap: 6px }
+  .ms-card .ms-bar-pill { font-size: 10px; padding: 3px 8px; border-radius: 5px; font-weight: 700; text-decoration: none }
+</style>
+</head>
+<body>
+
+<div id="drag-tooltip"></div>
+
+<div class="page">
+
+<div class="drag-banner">
+  <span style="font-size:18px">🧪</span>
+  <div style="flex:1">
+    <strong>Timeline interativa</strong> — arraste cards de milestone para reordenar; nas barras, arraste o centro para mover, ou as <code>bordas</code> para esticar/comprimir.
+    Granularidade <strong>diária</strong>. Marcador amarelo = hoje. Painel inferior atualiza conforme avança.
+  </div>
+</div>
+
+<div class="toolbar">
+  <button class="tbtn" onclick="__tl.exportOverrides()">⬇ Export</button>
+  <button class="tbtn" onclick="__tl.importOverrides()">⬆ Import</button>
+  <button class="tbtn danger" onclick="__tl.reset()">↺ Reset</button>
+</div>
+
+<div id="root"></div>
+
+<div class="footer-note" id="footer-note"></div>
+
+</div>
+
+<script id="timeline-data" type="application/json">
+{{TIMELINE_DATA_JSON}}
+</script>
+
+<script>
+{{TIMELINE_JS}}
+</script>
+
+</body>
+</html>

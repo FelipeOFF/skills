@@ -1,0 +1,41 @@
+product_type,recommended_style,color_mood,typography_mood,key_effects,anti_patterns,severity
+SaaS (General),Hero + Features + CTA,Trust blue + Orange CTA,Clean geometric,Glassmorphism cards hover lift,Cluttered hero with too many CTAs,HIGH
+SaaS (Analytics),Dashboard-First,Deep purple + Green accents,Geometric minimal,Smooth data transitions micro-interactions,Overwhelming charts without filters,HIGH
+SaaS (CRM),Card-Based Layout,Sky blue + Orange CTA,Clean professional,Subtle hover states card elevation,Complex navigation without breadcrumbs,HIGH
+SaaS (Communication),Chat-Centric,Indigo + Pink accents,Modern friendly,Real-time animations presence indicators,Notification overload without priority,MEDIUM
+E-commerce (Fashion),Visual-First Grid,Green + Orange accents,Modern serif mix,Image zoom parallax scroll,Small product images without zoom,HIGH
+E-commerce (Electronics),Spec-Comparison,Blue + Red urgency,Clean sans-serif,Quick-view modals filter animations,Missing comparison features,MEDIUM
+E-commerce (Luxury),Minimal Gallery,Black + Gold accents,Elegant serif,Slow reveals parallax luxury feel,Discount badges cluttered layouts,HIGH
+E-commerce (Marketplace),Grid + Filters,Purple + Amber accents,Friendly sans,Infinite scroll live search,Poor search and filter experience,HIGH
+Fintech/Crypto,Conversion-Optimized,Deep purple + Amber accents,Modern sans-serif,Dark mode glassmorphism,Light backgrounds reduce trust,MEDIUM
+Fintech (Banking),Trust-First,Navy blue + Green success,Secure professional,Subtle transitions security indicators,Flashy animations reduce trust perception,HIGH
+Fintech (Investment),Data-Dense,Deep indigo + Green,Technical clean,Real-time charts smooth updates,Delayed data without loading states,HIGH
+Healthcare App,Clean Informational,Teal + Green accents,Calm trustworthy,Smooth transitions calming animations,Red as primary color triggers anxiety,HIGH
+Healthcare (Telehealth),Video-Centric,Teal + Blue accents,Professional calm,Video quality indicators connection status,Complex UI during video calls,HIGH
+Healthcare (Mental Health),Soft Minimal,Soft purple + Green,Gentle rounded,Breathing animations gentle transitions,Harsh colors aggressive typography,HIGH
+Restaurant/Food,Menu-First Visual,Warm red + Gold accents,Friendly rounded,Food photography parallax,Stock photos instead of real food,HIGH
+Restaurant (Fine Dining),Minimal Elegant,Black + Gold,Elegant serif,Slow reveals ambient animations,Cluttered menus too many photos,MEDIUM
+Restaurant (Cafe),Warm Cozy,Brown + Green,Friendly warm,Warm color transitions,Cold corporate feeling,MEDIUM
+Education/EdTech,Progress-Driven,Blue + Amber rewards,Friendly clean,Progress bars gamification animations,Overwhelming content without progress tracking,HIGH
+Education (Kids),Gamified Colorful,Purple + Multicolor,Playful rounded,Celebration animations character interactions,Adult-oriented monotone design,HIGH
+Fitness/Sports,Energy-Driven,Red + Amber,Bold condensed,Dynamic transitions counter animations,Low contrast text on busy backgrounds,MEDIUM
+Fitness (Yoga),Calm Minimal,Green + Purple,Soft rounded,Breathing transitions gentle hover,Aggressive colors harsh fonts,HIGH
+Real Estate,Map-Centric,Navy + Green,Premium clean,Map interactions property card hover,Low quality property images,HIGH
+Real Estate (Luxury),Gallery Showcase,Black + Gold,Luxury serif,Cinematic property reveals,Cluttered listings generic layouts,HIGH
+Travel/Tourism,Destination-Visual,Cyan + Orange,Adventure display,Parallax hero destination reveals,Small destination images poor search,HIGH
+Legal/Law Firm,Trust Authority,Dark navy + Amber,Formal serif,Subtle professional transitions,Flashy animations reduce credibility,HIGH
+Nonprofit/NGO,Impact-Driven,Green + Amber,Warm friendly,Impact counter animations story reveals,Corporate cold design,MEDIUM
+Gaming,Immersive Dark,Purple + Red,Bold display,Particle effects glitch animations,Slow load times poor performance,HIGH
+Music/Entertainment,Visual Festival,Pink + Purple,Bold expressive,Audio visualizations parallax,Muted boring layouts,MEDIUM
+Developer Tools,Docs-First Dark,Dark + Green accents,Mono technical,Syntax highlighting code animations,Poor documentation no dark mode,HIGH
+AI/ML Product,Futuristic Clean,Indigo + Green,Tech sans-serif,Neural network visualizations gradients,Overpromising UI without substance,MEDIUM
+Logistics,Dashboard Ops,Blue + Amber alerts,Clean functional,Real-time tracking map updates,Complex UIs without guided onboarding,HIGH
+Pet/Animal,Playful Warm,Amber + Green,Friendly rounded,Playful micro-interactions,Cold clinical design,MEDIUM
+Wedding/Events,Romantic Elegant,Rose + Gold,Romantic serif,Soft parallax elegant reveals,Cluttered busy layouts,HIGH
+Photography,Portfolio Gallery,Dark + Orange accent,Minimal serif,Lightbox transitions grid animations,Small thumbnails slow loading,HIGH
+Social Media,Feed-Centric,Indigo + Pink,Modern social,Infinite scroll real-time updates,Slow feed loading no skeleton states,HIGH
+News/Media,Content-Dense,Dark + Red breaking,Editorial serif,Breaking news banners smooth scroll,Paywalls without value preview,MEDIUM
+Sustainability,Nature Organic,Green + Blue ocean,Modern organic,Organic shape animations nature parallax,Greenwashing generic stock nature,HIGH
+Consulting,Authority Clean,Navy + Amber,Professional serif,Subtle authority transitions,Generic template appearance,MEDIUM
+Automotive,Configurator,Dark + Red accent,Bold technical,3D car configurator smooth transitions,Slow 3D loading poor mobile,HIGH
+Construction,Industrial Solid,Amber + Navy,Strong bold,Project timeline animations,Outdated design poor mobile experience,MEDIUM

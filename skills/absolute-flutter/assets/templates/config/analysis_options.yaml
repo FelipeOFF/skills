@@ -1,0 +1,85 @@
+# analysis_options.yaml — explicit lint allowlist, no `include:` of a shared
+# ruleset. Rules are enumerated one-by-one so behavior is pinned and immune to
+# upstream churn. Copy verbatim into the app root; it needs no renaming.
+
+analyzer:
+  language:
+    # Reject implicit downcasts and casts from dynamic. Forces explicit `as`
+    # (or null-aware helpers) even in glue code.
+    strict-casts: true
+    strict-raw-types: true
+  errors:
+    # Codegen noise / pragmatic downgrades.
+    todo: ignore
+    invalid_annotation_target: ignore
+    avoid_void_async: ignore
+    missing_required_param: warning
+    missing_return: warning
+  exclude:
+    # Generated siblings are committed but never analyzed or hand-edited.
+    - lib/**.freezed.dart
+    - lib/**.g.dart
+    - lib/**.drift.dart
+    - lib/generated/**
+
+formatter:
+  # Non-default 120-column width (Dart 3.7+ formatter block, not legacy
+  # dart_style). Must match the `page_width` used everywhere in this skill.
+  page_width: 120
+
+linter:
+  rules:
+    # Imports / ordering — package: imports only, one sorted block.
+    - always_use_package_imports
+    - avoid_relative_lib_imports
+    - directives_ordering
+    - prefer_relative_imports: false
+
+    # Strings.
+    - prefer_single_quotes
+    - unnecessary_string_escapes
+    - unnecessary_string_interpolations
+    - prefer_interpolation_to_compose_strings
+
+    # const — aggressive.
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+
+    # final.
+    - prefer_final_locals
+    - prefer_final_in_for_each
+    - prefer_final_fields
+
+    # Return types / public API annotations.
+    - always_declare_return_types
+    - type_annotate_public_apis
+    - avoid_return_types_on_setters
+
+    # Bodies.
+    - prefer_expression_function_bodies
+    - unnecessary_lambdas
+
+    # Naming.
+    - camel_case_types
+    - camel_case_extensions
+    - constant_identifier_names
+    - file_names
+    - library_names
+    - non_constant_identifier_names
+
+    # General hygiene.
+    - annotate_overrides
+    - avoid_init_to_null
+    - avoid_print
+    - avoid_redundant_argument_values
+    - avoid_unused_constructor_parameters
+    - prefer_final_parameters
+    - require_trailing_commas
+    - sort_constructors_first
+    - unnecessary_this
+    - unnecessary_const
+    - unnecessary_new
+    - unnecessary_null_checks
+    - use_super_parameters

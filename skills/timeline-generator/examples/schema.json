@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "ROADMAP Q3 · Acme Checkout Revamp",
+    "subtitle": "EXAMPLE PROJECT · SAMPLE SCHEMA FOR REFERENCE",
+    "base_date": "2026-01-05",
+    "total_days": 70,
+    "facts": [
+      "⚡ Team: <strong>5 engineers</strong>",
+      "🔍 CR cycle: <strong>~2 days / PR</strong>",
+      "📏 Target: <strong>15 files / PR</strong>",
+      "📅 Deadline: <strong style='color:#e63946'>15 Mar 2026</strong>"
+    ],
+    "links": [
+      {"label": "PR sample", "url": "https://github.com/example-org/checkout/pull/42"},
+      {"label": "Epic PROJ-100", "url": "https://example.atlassian.net/browse/PROJ-100"}
+    ],
+    "milestones": [
+      {"id": "v0", "label": "🚀 V0 — Foundation", "color": "#38bdf8", "span": [1, 8]},
+      {"id": "v1", "label": "📊 V1 — Tracking + Analytics", "color": "#F4A261", "span": [8, 29]},
+      {"id": "v2", "label": "🏷️ V2 — Versioning", "color": "#3fb950", "span": [29, 36]},
+      {"id": "v3", "label": "✍️ V3 — Custom Surveys", "color": "#a78bfa", "span": [36, 50]},
+      {"id": "v4", "label": "🔄 V4 — Full Post-MVP", "color": "#f471b5", "span": [50, 71]}
+    ]
+  },
+  "lanes": [
+    {
+      "id": "backend", "label": "Backend", "color": "#38bdf8",
+      "bars": [
+        {"id": "v0-prs", "label": "Initial PRs (auth + schema)", "span": [1, 8], "milestone": "v0", "status": "in-review",
+          "links": [
+            {"label": "#41", "url": "https://github.com/example-org/checkout/pull/41"},
+            {"label": "#42", "url": "https://github.com/example-org/checkout/pull/42"}
+          ]},
+        {"id": "tracking-impressions", "label": "PROJ-201 impression tracking", "span": [8, 15], "milestone": "v1", "status": "pending",
+          "links": [{"label": "PROJ-201", "url": "https://example.atlassian.net/browse/PROJ-201"}]}
+      ]
+    },
+    {
+      "id": "frontend", "label": "Frontend", "color": "#F4A261",
+      "bars": [
+        {"id": "v0-gate", "label": "PROJ-150 feature gate UI", "span": [1, 8], "milestone": "v0", "status": "in-progress",
+          "links": [{"label": "PROJ-150", "url": "https://example.atlassian.net/browse/PROJ-150"}]}
+      ]
+    }
+  ],
+  "pins": [
+    {"day": 1, "label": "S1", "tone": "red", "text": "Kick-off · request infra access + reviewer assignments"},
+    {"day": 8, "label": "✓ V0", "tone": "blue", "text": "Gate V0 — services in staging? 3 PRs merged?"}
+  ]
+}

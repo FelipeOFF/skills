@@ -1,0 +1,67 @@
+{
+  "name": "@felipeoff/openclaw-md-to-pdf",
+  "version": "1.0.0",
+  "description": "OpenClaw skill for converting Markdown to PDF using md-to-pdf",
+  "main": "src/index.js",
+  "bin": {
+    "openclaw-md-to-pdf": "./scripts/convert.js"
+  },
+  "scripts": {
+    "convert": "node scripts/convert.js",
+    "test": "jest",
+    "lint": "eslint src scripts"
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-skill",
+    "openclaw-plugin",
+    "markdown",
+    "pdf",
+    "converter",
+    "md-to-pdf"
+  ],
+  "author": "FelipeOFF <felipeoliveireferreira@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FelipeOFF/openclaw-md-to-pdf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FelipeOFF/openclaw-md-to-pdf/issues"
+  },
+  "homepage": "https://github.com/FelipeOFF/openclaw-md-to-pdf#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "glob": "^10.0.0",
+    "md-to-pdf": "^5.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0"
+  },
+  "openclaw": {
+    "skillId": "openclaw-md-to-pdf",
+    "version": "1.0.0",
+    "tools": [
+      "md_to_pdf_convert"
+    ],
+    "config": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "defaultOutputDir": {
+            "type": "string",
+            "description": "Default output directory for PDFs"
+          },
+          "theme": {
+            "type": "string",
+            "description": "CSS theme for PDF styling"
+          }
+        }
+      }
+    }
+  }
+}

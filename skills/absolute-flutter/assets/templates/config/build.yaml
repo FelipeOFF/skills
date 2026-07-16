@@ -1,0 +1,54 @@
+# build.yaml — per-builder codegen options for build_runner.
+# Copy verbatim into the app root; nothing here needs renaming.
+#
+# Build command:
+#   dart run build_runner build --delete-conflicting-outputs
+#
+# The shared `&options` / `*options` YAML anchor keeps drift_dev:analyzer and
+# drift_dev:modular in sync — define the drift options once, reuse twice.
+
+targets:
+  $default:
+    builders:
+      # freezed — auto-format the generated *.freezed.dart so it matches the
+      # 120-col project style.
+      freezed:
+        options:
+          format: true
+
+      # json_serializable — explicit_to_json so nested freezed DTOs serialize
+      # correctly (omitting it silently emits "Instance of '...'"); any_map so
+      # decoders accept untyped Map, not just Map<String, dynamic>.
+      json_serializable:
+        options:
+          explicit_to_json: true
+          any_map: true
+          field_rename: none
+
+      # Non-modular drift_dev is OFF; only analyzer + modular run below.
+      drift_dev:
+        enabled: false
+
+      drift_dev:analyzer:
+        enabled: true
+        options: &options
+          # Store DateTime as ISO-8601 text, not unix ints. Changing this is a
+          # breaking schema migration.
+          store_date_time_values_as_text: true
+          named_parameters: true
+          sql:
+            dialect: sqlite
+            options:
+              version: "3.39"
+              modules:
+                - fts5
+
+      # Modular output: one generated *.drift.dart per table. Faster incremental
+      # builds than monolithic drift. Reuses the same anchored options.
+      drift_dev:modular:
+        enabled: true
+        options: *options
+
+      # intl_utils — generate lib/generated/l10n.dart from the .arb files.
+      intl_utils:intl_utils:
+        enabled: true

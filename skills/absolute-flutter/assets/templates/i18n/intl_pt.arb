@@ -1,0 +1,61 @@
+{
+  "@@locale": "pt",
+
+  "appTitle": "Aplicativo de Exemplo",
+  "@appTitle": {
+    "description": "Application title shown in the OS task switcher and the app bar."
+  },
+
+  "ok": "OK",
+  "@ok": {
+    "description": "Generic affirmative button label."
+  },
+
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Generic dismissive button label."
+  },
+
+  "next": "Avançar",
+  "@next": {
+    "description": "Advance-to-next-step button label."
+  },
+
+  "confirm": "Confirmar",
+  "@confirm": {
+    "description": "Generic confirmation button label."
+  },
+
+  "welcomeTitle": "Bem-vindo",
+  "@welcomeTitle": {
+    "description": "Heading shown on the first screen."
+  },
+
+  "genericErrorTitle": "Algo deu errado",
+  "@genericErrorTitle": {
+    "description": "Title for an unexpected/unspecified error state."
+  },
+
+  "greeting": "Olá, {name}!",
+  "@greeting": {
+    "description": "Personalized greeting addressing the user by name.",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Alex"
+      }
+    }
+  },
+
+  "itemsCount": "{count, plural, =0{Nenhum item} =1{1 item} other{{count} itens}}",
+  "@itemsCount": {
+    "description": "Count of items, pluralized via ICU.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact",
+        "example": "3"
+      }
+    }
+  }
+}

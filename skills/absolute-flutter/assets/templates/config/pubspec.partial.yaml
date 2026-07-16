@@ -1,0 +1,50 @@
+# pubspec.partial.yaml — the codegen-relevant SLICE of pubspec.yaml, not a full
+# pubspec. Merge these blocks into the app's real pubspec.yaml. Do NOT ship this
+# file as-is; it has no name/version/environment of its own beyond the SDK pin.
+#
+# Pin SDK >= 3.9.0: the null-aware map-literal element syntax ({'k': ?maybeNull})
+# used in request bodies requires it.
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  # Runtime halves of the codegen pairs (the annotations + reactive/runtime
+  # libs). The *_annotation packages must be runtime deps, not dev deps.
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  drift: ^2.18.0
+  intl: ^0.19.0
+  rx_notifier: ^2.4.0
+  dartz: ^0.10.1
+  dio: ^5.7.0
+  get_it: ^7.7.0
+  go_router: ^14.2.0
+
+dev_dependencies:
+  # Codegen toolchain. Run all of them through one build_runner pass:
+  #   dart run build_runner build --delete-conflicting-outputs
+  # Regenerate i18n separately:
+  #   dart run intl_utils:generate
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  drift_dev: ^2.18.0
+  intl_utils: ^2.8.7
+
+dependency_overrides:
+  # Pin around a transitive intl conflict between flutter_localizations and
+  # intl_utils. Do NOT bump intl directly without checking intl_utils compat.
+  intl: any
+
+flutter:
+  # Required so Flutter picks up generated localization delegates.
+  generate: true
+
+# intl_utils config block (read by `dart run intl_utils:generate`).
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations
+  main_locale: en
+  arb_dir: lib/res/l10n
+  output_dir: lib/generated

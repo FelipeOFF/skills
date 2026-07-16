@@ -1,0 +1,120 @@
+{
+  "$schema": "https://schemas.openclaw.ai/plugin.json",
+  "id": "openclaw-md-to-pdf",
+  "name": "Markdown to PDF Converter",
+  "description": "Convert Markdown files to PDF using md-to-pdf with customizable styling and themes",
+  "version": "1.0.0",
+  "author": {
+    "name": "FelipeOFF",
+    "email": "felipeoliveireferreira@gmail.com",
+    "url": "https://github.com/FelipeOFF"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FelipeOFF/openclaw-md-to-pdf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FelipeOFF/openclaw-md-to-pdf/issues"
+  },
+  "homepage": "https://github.com/FelipeOFF/openclaw-md-to-pdf#readme",
+  "engines": {
+    "openclaw": ">=1.0.0",
+    "node": ">=18.0.0"
+  },
+  "categories": [
+    "document-processing",
+    "productivity",
+    "utilities"
+  ],
+  "keywords": [
+    "markdown",
+    "pdf",
+    "converter",
+    "document",
+    "export"
+  ],
+  "tools": [
+    {
+      "name": "md_to_pdf_convert",
+      "description": "Convert a Markdown file to PDF with optional theming and styling",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "inputFile": {
+            "type": "string",
+            "description": "Path to the Markdown file to convert"
+          },
+          "outputFile": {
+            "type": "string",
+            "description": "Path for the output PDF file (optional)"
+          },
+          "theme": {
+            "type": "string",
+            "description": "CSS theme name or custom CSS file path (optional)",
+            "enum": ["default", "github", "latex", "custom"]
+          },
+          "header": {
+            "type": "string",
+            "description": "Header text for PDF pages (optional)"
+          },
+          "footer": {
+            "type": "string",
+            "description": "Footer text for PDF pages (optional)"
+          }
+        },
+        "required": ["inputFile"]
+      }
+    },
+    {
+      "name": "md_to_pdf_batch",
+      "description": "Convert multiple Markdown files to PDF in batch",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "inputDir": {
+            "type": "string",
+            "description": "Directory containing Markdown files"
+          },
+          "outputDir": {
+            "type": "string",
+            "description": "Directory for output PDFs"
+          },
+          "pattern": {
+            "type": "string",
+            "description": "File pattern to match (e.g., '*.md')",
+            "default": "*.md"
+          }
+        },
+        "required": ["inputDir", "outputDir"]
+      }
+    }
+  ],
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "defaultOutputDir": {
+        "type": "string",
+        "default": "./output",
+        "description": "Default directory for PDF output"
+      },
+      "defaultTheme": {
+        "type": "string",
+        "enum": ["default", "github", "latex"],
+        "default": "default",
+        "description": "Default theme for PDF generation"
+      },
+      "chromePath": {
+        "type": "string",
+        "description": "Path to Chrome/Chromium executable (optional)"
+      }
+    }
+  },
+  "scripts": {
+    "convert": "node scripts/convert.js"
+  },
+  "dependencies": {
+    "required": ["md-to-pdf"],
+    "optional": ["puppeteer"]
+  }
+}

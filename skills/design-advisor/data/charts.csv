@@ -1,0 +1,21 @@
+data_type,best_chart,colors,accessibility,library
+Time series trends,Line chart with area fill,Primary for main line / muted for comparison / gradient fill to baseline,Include data table alternative and tooltip with exact values,Recharts or Chart.js with time adapter
+Part-to-whole composition,Donut chart with center metric,Sequential palette from primary to lightest / max 6 segments,Label segments directly not just legend / announce percentages,Recharts PieChart or D3.js
+Categorical comparison,Horizontal bar chart,Primary fill / muted grid / accent for highlighted bar,Sort bars by value / include value labels at end of bars,Recharts BarChart or Nivo
+Distribution spread,Histogram or box plot,Primary fill / secondary for quartile markers,Include median and mean annotations with tooltips,D3.js or Plotly
+Correlation between 2 variables,Scatter plot with trend line,Primary dots / accent trend line / muted grid,Include regression info / accessible point size minimum 8px,Recharts ScatterChart or D3.js
+Geographic data,Choropleth or bubble map,Sequential single-hue palette / neutral for no-data regions,Include data table fallback / pattern fills for colorblind users,D3.js with TopoJSON or Mapbox
+Ranking/leaderboard,Horizontal bar chart sorted,Gradient from primary (top) to muted (bottom),Rank numbers as labels / screen reader table alternative,Recharts BarChart sorted
+Progress toward goal,Gauge or progress bar,Green for on-track / amber for at-risk / red for behind,Include percentage text / announce progress to screen readers,Custom SVG or Recharts RadialBarChart
+Comparison across multiple dimensions,Radar/spider chart,Primary fill with 20% opacity / accent for comparison overlay,Limit to 5-8 dimensions / include data table alternative,Recharts RadarChart or Chart.js
+Hierarchical data,Treemap or sunburst,Sequential palette by depth level / contrasting text,Interactive drill-down / breadcrumb navigation back,D3.js treemap or Nivo
+Flow/process data,Sankey or alluvial diagram,Category-based palette / muted connections / hover highlight,Include text description of major flows,D3-sankey or Plotly
+Real-time streaming data,Sparkline or live line chart,Primary line / green for up / red for down,Update label with latest value / rate limit updates to 1/second,Recharts with streaming data or lightweight Canvas
+Budget/financial breakdown,Stacked bar chart,Expense categories with distinct hues / muted baseline,Include legend / total labels on each bar / table fallback,Recharts StackedBarChart
+Before-after comparison,Grouped bar or dumbbell chart,Muted for before / accent for after / connector line,Clear before/after labels / include delta values,D3.js or Recharts with custom shapes
+Survey/rating data,Diverging stacked bar,Green spectrum for positive / red spectrum for negative / gray neutral,Center on neutral / include percentage labels,D3.js or Nivo diverging bars
+KPI dashboard metric,Big number with sparkline,Primary for number / muted sparkline / green/red for delta,Large readable number / trend direction indicator,Custom component with Recharts sparkline
+Funnel conversion,Funnel chart,Sequential darkening from top to bottom / accent for target stage,Include conversion rates between stages / table alternative,D3.js custom or Nivo funnel
+Schedule/timeline,Gantt chart or timeline,Category colors per workstream / muted grid / today line accent,Include milestone markers / keyboard navigation between items,D3.js or custom with CSS grid
+Network relationships,Force-directed graph,Node color by category / edge weight as thickness / hover highlight,Include list view alternative / search functionality,D3-force or vis.js
+Proportional comparison,Waffle chart or icon array,Primary fill / muted empty / accent for highlighted segment,Each icon represents a clear unit / include fraction text,Custom SVG grid

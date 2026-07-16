@@ -1,0 +1,54 @@
+# L1 — safe-fix (L0 + correções mecânicas de baixo risco)
+#
+# Cole este bloco no analysis_options.yaml do projeto.
+# Wiring abaixo é o LEGACY (Dart < 3.9): analyzer.plugins + dart_code_linter no topo.
+#
+# Equivalente para Dart >= 3.9 (recomendado): troque o bloco analyzer.plugins
+# pela forma top-level `plugins:` com `diagnostics:` (map id->true), mantendo as
+# mesmas metrics/metrics-exclude. Ex.:
+#   plugins:
+#     dart_code_linter:
+#       diagnostics:
+#         avoid-redundant-async: true
+#         prefer-trailing-comma: true
+# Caveat: rules que exigem config obrigatória (avoid-banned-imports, ban-name)
+# NÃO são suportadas pelo protocolo plugins:/diagnostics: — use o legacy.
+#
+# L1 mantém os mesmos thresholds do L0 e adiciona as rules auto-fixáveis (🛠) para
+# que `dart run dart_code_linter:metrics fix <target>` tenha trabalho. NÃO ativa
+# anti-patterns.
+
+analyzer:
+  plugins:
+    - dart_code_linter
+
+dart_code_linter:
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 4
+    maximum-nesting-level: 5
+    source-lines-of-code: 50
+  metrics-exclude:
+    - test/**
+  rules:
+    # mesma base segura do L0
+    - avoid-dynamic
+    - avoid-unused-parameters
+    - no-empty-block
+    - no-equal-then-else
+    - newline-before-return
+    # rules auto-fixáveis (🛠) — dão trabalho ao `dcl fix`
+    - avoid-double-slash-imports
+    - avoid-duplicate-exports
+    - avoid-redundant-async
+    - avoid-unnecessary-conditionals
+    - binary-expression-operand-order
+    - double-literal-format
+    - format-comment
+    - no-boolean-literal-compare
+    - prefer-conditional-expressions
+    - prefer-first
+    - prefer-immediate-return
+    - prefer-iterable-of
+    - prefer-last
+    - prefer-trailing-comma

@@ -1,0 +1,98 @@
+# L3 — deep (L2 + thresholds agressivos + rules amplas + ambos os anti-patterns)
+#
+# Cole este bloco no analysis_options.yaml do projeto.
+# Wiring abaixo é o LEGACY (Dart < 3.9): analyzer.plugins + dart_code_linter no topo.
+#
+# Equivalente para Dart >= 3.9 (recomendado): troque o bloco analyzer.plugins
+# pela forma top-level `plugins:` com `diagnostics:` (map id->true), mantendo as
+# mesmas metrics/metrics-exclude. Ex.:
+#   plugins:
+#     dart_code_linter:
+#       diagnostics:
+#         avoid-non-null-assertion: true
+#         prefer-static-class: true
+# Caveat: rules que exigem config obrigatória (avoid-banned-imports, ban-name)
+# NÃO são suportadas pelo protocolo plugins:/diagnostics: — use o legacy.
+#
+# L3 é agressivo: thresholds baixos forçam refatorações estruturais (extract-method,
+# achatar nesting, dividir params). Lembre: anti-patterns se apoiam nas métricas —
+# long-method usa source-lines-of-code e long-parameter-list usa number-of-parameters.
+# Nota dos facts: maintainability-index é "still very experimental ... should not be
+# taken as seriously"; technical-debt é por arquivo. Trate-os como sinais, não verdade.
+
+analyzer:
+  plugins:
+    - dart_code_linter
+
+dart_code_linter:
+  metrics:
+    cyclomatic-complexity: 10
+    number-of-parameters: 3
+    maximum-nesting-level: 3
+    source-lines-of-code: 40
+    number-of-methods: 10
+    weight-of-class: 0.33
+    maintainability-index: 50
+    lines-of-code: 100
+    halstead-volume: 150
+  metrics-exclude:
+    - test/**
+  rules:
+    # base L2
+    - avoid-dynamic
+    - avoid-unused-parameters
+    - no-empty-block
+    - no-equal-then-else
+    - newline-before-return
+    - avoid-double-slash-imports
+    - avoid-duplicate-exports
+    - avoid-redundant-async
+    - avoid-unnecessary-conditionals
+    - binary-expression-operand-order
+    - double-literal-format
+    - format-comment
+    - no-boolean-literal-compare
+    - prefer-conditional-expressions
+    - prefer-first
+    - prefer-immediate-return
+    - prefer-iterable-of
+    - prefer-last
+    - prefer-trailing-comma
+    - avoid-nested-conditional-expressions
+    - avoid-non-null-assertion
+    - avoid-passing-async-when-sync-expected
+    - avoid-throw-in-catch-block
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - no-equal-arguments
+    - no-magic-number
+    - prefer-async-await
+    - prefer-match-file-name
+    - prefer-moving-to-variable
+    - prefer-single-quotes
+    # rules adicionais do L3 (mais exigentes / estruturais)
+    - avoid-cascade-after-if-null
+    - avoid-collection-methods-with-unrelated-types
+    - avoid-global-state
+    - avoid-ignoring-return-values
+    - avoid-late-keyword
+    - avoid-missing-enum-constant-in-map
+    - avoid-substring
+    - avoid-top-level-members-in-tests
+    - list-all-equatable-fields
+    - member-ordering
+    - missing-test-assertion
+    - no-blank-line-before-single-return
+    - no-object-declaration
+    - prefer-commenting-analyzer-ignores
+    - prefer-correct-identifier-length
+    - prefer-correct-test-file-name
+    - prefer-correct-type-name
+    - prefer-enums-by-name
+    - prefer-first-or-null
+    - prefer-named-record-fields
+    - prefer-static-class
+  anti-patterns:
+    - long-method
+    - long-parameter-list

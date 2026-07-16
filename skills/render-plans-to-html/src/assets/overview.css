@@ -1,0 +1,29 @@
+.overview-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+.overview-card {
+  background: var(--sidebar-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; display: flex; flex-direction: column; gap: 6px;
+}
+.overview-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.overview-card .value { font-size: 24px; font-weight: 700; color: var(--accent); }
+.overview-card .sub   { font-size: 12px; color: var(--muted); }
+.overview-summary {
+  background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px;
+  padding: 16px 20px; font-size: 15px; line-height: 1.6; margin: 24px 0;
+}
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+.chart-card {
+  background: var(--sidebar-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; min-height: 280px;
+}
+.chart-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.chart-card canvas { max-height: 240px; }
+.heatmap { width: 100%; }
+.heatmap-cell { stroke: var(--border); stroke-width: 1; }
+.heatmap-label { font-size: 11px; fill: var(--fg); font-family: "SF Mono", Menlo, Consolas, monospace; }
+@media (max-width: 1100px) {
+  .overview-grid { grid-template-columns: repeat(3, 1fr); }
+  .charts-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .overview-grid { grid-template-columns: repeat(2, 1fr); }
+}

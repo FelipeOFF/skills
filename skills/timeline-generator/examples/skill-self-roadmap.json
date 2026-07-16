@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "timeline-generator — skill self-roadmap",
+    "subtitle": "META DEMO · TIMELINE-GENERATOR · BUILD + POLISH",
+    "base_date": "2026-05-26",
+    "total_days": 14,
+    "show_milestones": false,
+    "facts": [
+      "🛠️ Build: <strong>SKILL.md → adapters → template → render</strong>",
+      "🎨 Polish: <strong>drag · delete · alignment · density</strong>",
+      "📦 Output: HTML <strong>self-contained</strong> (CSS+JS inline)",
+      "🪝 Hooks: <strong>Stop + PostToolUse</strong> opt-in via --hook"
+    ],
+    "links": [
+      {"label": "SKILL.md", "url": "SKILL.md"},
+      {"label": "README", "url": "README.md"},
+      {"label": "examples/schema.json", "url": "examples/schema.json"}
+    ],
+    "milestones": [
+      {"id": "build", "label": "🛠️ Build", "color": "#38bdf8", "span": [1, 8]},
+      {"id": "polish", "label": "🎨 Polish + Demo", "color": "#a78bfa", "span": [8, 15]}
+    ]
+  },
+  "lanes": [
+    {
+      "id": "skill-core",
+      "label": "Skill Core",
+      "color": "#38bdf8",
+      "bars": [
+        {"id": "skill-md", "label": "SKILL.md frontmatter + workflow", "span": [1, 3], "status": "done",
+          "links": [{"label": "SKILL.md", "url": "SKILL.md"}]},
+        {"id": "generate-py", "label": "scripts/generate.py orchestrator", "span": [3, 5], "status": "done",
+          "links": [{"label": "generate.py", "url": "scripts/generate.py"}]},
+        {"id": "update-py", "label": "scripts/update.py incremental + --auto", "span": [5, 7], "status": "done",
+          "links": [{"label": "update.py", "url": "scripts/update.py"}]},
+        {"id": "install-hook", "label": "install-hook.sh (jq-based)", "span": [7, 9], "status": "done",
+          "links": [{"label": "install-hook.sh", "url": "scripts/install-hook.sh"}]}
+      ]
+    },
+    {
+      "id": "template",
+      "label": "Template (HTML/JS)",
+      "color": "#F4A261",
+      "bars": [
+        {"id": "html-template", "label": "timeline.html.template (CSS + placeholders)", "span": [1, 4], "status": "done",
+          "links": [{"label": "template", "url": "template/timeline.html.template"}]},
+        {"id": "js-render", "label": "timeline.js — render headers/lanes/pins/bottom", "span": [4, 8], "status": "done",
+          "links": [{"label": "timeline.js", "url": "template/timeline.js"}]},
+        {"id": "today-marker", "label": "today marker + auto-fit bars + alignment", "span": [8, 12], "status": "in-progress",
+          "links": []}
+      ]
+    },
+    {
+      "id": "adapters",
+      "label": "Adapters",
+      "color": "#3fb950",
+      "bars": [
+        {"id": "gsd-adapter", "label": "gsd.py (.planning/STATE.md + ROADMAP.md)", "span": [2, 4], "status": "done",
+          "links": [{"label": "gsd.py", "url": "adapters/gsd.py"}]},
+        {"id": "jira-adapter", "label": "jira.py (REST + stub fallback)", "span": [4, 6], "status": "done",
+          "links": [{"label": "jira.py", "url": "adapters/jira.py"}]},
+        {"id": "linear-adapter", "label": "linear.py (GraphQL)", "span": [6, 8], "status": "done",
+          "links": [{"label": "linear.py", "url": "adapters/linear.py"}]},
+        {"id": "manual-adapter", "label": "manual.py + json.py (5 formatos texto)", "span": [8, 11], "status": "in-progress",
+          "links": [{"label": "manual.py", "url": "adapters/manual.py"}]}
+      ]
+    },
+    {
+      "id": "ux-polish",
+      "label": "UX / Drag",
+      "color": "#a78bfa",
+      "bars": [
+        {"id": "drag-bars", "label": "drag move + resize bars (mousedown + clamp)", "span": [3, 6], "status": "done", "links": []},
+        {"id": "drag-cards", "label": "drag-to-reorder milestone cards (HTML5 DnD)", "span": [6, 8], "status": "done", "links": []},
+        {"id": "delete-bars", "label": "delete ✕ + localStorage overrides", "span": [8, 11], "status": "in-progress", "links": []},
+        {"id": "anti-overlap", "label": "anti-overlap clamps + custom tooltip", "span": [11, 14], "status": "pending", "links": []}
+      ]
+    },
+    {
+      "id": "docs",
+      "label": "Docs + Demo",
+      "color": "#f471b5",
+      "bars": [
+        {"id": "readme", "label": "README user-facing + examples/schema.json", "span": [7, 10], "status": "done",
+          "links": [{"label": "README", "url": "README.md"}]},
+        {"id": "smoke", "label": "smoke tests (json + gsd + manual)", "span": [10, 12], "status": "in-progress", "links": []},
+        {"id": "demo-html", "label": "demo.html (este arquivo, self-referential)", "span": [12, 15], "status": "pending", "links": []}
+      ]
+    }
+  ],
+  "pins": [
+    {"day": 1, "label": "🚀 D1", "tone": "blue", "text": "Kick-off · scaffold inicial + 8 TaskCreate"},
+    {"day": 7, "label": "🔧 D7", "tone": "orange", "text": "Code-simplifier roda · -56 LOC nos Python files"},
+    {"day": 9, "label": "✓ D9", "tone": "green", "text": "Gate Build — adapters + template + scripts prontos"},
+    {"day": 14, "label": "🎉 D14", "tone": "purple", "text": "Polish + demo entregues · skill production-ready"}
+  ]
+}
