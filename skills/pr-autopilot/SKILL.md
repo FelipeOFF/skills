@@ -1,5 +1,3 @@
-successfully downloaded text file (SHA: f546ad1faac5a5638be6d18f875069c8c6bfdb15)
-
 ---
 name: pr-autopilot
 description: Orchestrates the full lifecycle of a Pull Request — creation, two-track multi-agent code review (deep maintainability audit for code judo + test-value assessment when tests are present), triage of every comment already on the PR (human and bot), automated fixes with inline replies, merge-conflict resolution, CI failure attribution and repair, and auto-merge. Use when the user wants to ship a branch end-to-end with minimal supervision, or to work through the feedback and red CI a PR already has (e.g. "open PR and merge", "/pr-autopilot", "ship this branch", "resolve the PR comments", "fix the failing CI on my PR", "review and merge my branch"). Supports GitHub (gh) and GitLab (glab). Coordinates Reviewer and Author subagents via the Task tool.
