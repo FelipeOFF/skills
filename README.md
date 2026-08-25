@@ -2,14 +2,34 @@
 
 A single home for all my agent skills — centralized so everything installs the same way, from one place. Built to work with **Claude Code, Codex, OpenCode, Cursor**, and every other agent supported by the open [`skills`](https://github.com/vercel-labs/skills) ecosystem.
 
-**23 skills**, installable one by one — you only ever load what the current task needs.
+**36 skills**, installable one by one — you only ever load what the current task needs.
 
 ## Catalog
+
+### Writing & docs
+| Skill | What it does |
+| ----- | ------------ |
+| [`ux-writing`](./skills/ux-writing/) | Judgment rules for user-facing text, docs, error messages, and CLI output. |
 
 ### Business & product
 | Skill | What it does |
 | ----- | ------------ |
 | [`groom-me`](./skills/groom-me/) | A **non-technical grooming interview** that confirms intended behavior *before* any business-rule change. |
+
+### HTML artifacts
+| Skill | What it does |
+| ----- | ------------ |
+| [`html`](./skills/html/) | Create self-contained single-file HTML artifacts — reports, explainers, landing pages, presentations, tools. |
+| [`design-artifact`](./skills/design-artifact/) | Design principles and creative direction for HTML artifacts — palette, type pairing, layout, theming. |
+| [`html-wireframe`](./skills/html-wireframe/) | Low-fidelity HTML wireframes that test information hierarchy, content, navigation, and responsive structure. |
+| [`html-prototype`](./skills/html-prototype/) | Polished, responsive HTML mockups and interactive prototypes. |
+| [`html-plan`](./skills/html-plan/) | Clear, self-contained HTML plans that preserve source material while improving hierarchy and reviewability. |
+| [`html-diagram`](./skills/html-diagram/) | HTML diagrams whose layout, notation, and interaction clarify relationships, sequence, topology, or state. |
+
+### Visuals
+| Skill | What it does |
+| ----- | ------------ |
+| [`show-me`](./skills/show-me/) | Understand topics visually with concise diagrams, code-shape sketches, and focused HTML artifacts. |
 
 ### Frontend & design
 | Skill | What it does |
@@ -17,6 +37,15 @@ A single home for all my agent skills — centralized so everything installs the
 | [`ant-design`](./skills/ant-design/) | Build consistent React UIs with Ant Design (antd) — layout, forms, tables, theming. |
 | [`design-advisor`](./skills/design-advisor/) | Industry-specific UI/UX recommendations (550+ rules, palettes, font pairings) before you build. |
 | [`frontend-project-style`](./skills/frontend-project-style/) | A configurable design system and style guide for any frontend project. |
+
+### Design & motion
+| Skill | What it does |
+| ----- | ------------ |
+| [`emil-design-eng`](./skills/emil-design-eng/) | Emil Kowalski's philosophy on UI polish, component design, and the invisible details that make software feel great. |
+| [`review-animations`](./skills/review-animations/) | Review animation and motion code against a high craft bar. |
+| [`improve-animations`](./skills/improve-animations/) | Survey a codebase's animation code and produce a prioritized audit with implementation plans. |
+| [`animation-vocabulary`](./skills/animation-vocabulary/) | Reverse-lookup glossary that turns vague animation descriptions into exact terms. |
+| [`apple-design`](./skills/apple-design/) | Apple's approach to interface design and fluid, physical motion, translated for the web. |
 
 ### Flutter
 | Skill | What it does |
