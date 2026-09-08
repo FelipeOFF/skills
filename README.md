@@ -59,7 +59,7 @@ A single home for all my agent skills — centralized so everything installs the
 | [`race-condition-guard`](./skills/race-condition-guard/) | Catch and prevent race conditions in concurrent code (TOCTOU, lost update, double-submit). |
 | [`dart-code-linter`](./skills/dart-code-linter/) | Find and auto-fix Dart/Flutter code-quality issues with `dart_code_linter` (DCL). |
 | [`sonarqube-analyzer`](./skills/sonarqube-analyzer/) | Analyze a self-hosted SonarQube, fetch issues, and suggest automated fixes. |
-| [`pr-autopilot`](./skills/pr-autopilot/) | Orchestrate the full PR lifecycle — creation, multi-agent review, fixes, CI polling, auto-merge. |
+| [`pr-autopilot`](./skills/pr-autopilot/) | Orchestrate the full PR lifecycle — creation, multi-agent review, fixes, CI polling, auto-merge, and opt-in `--cascade` stacked forests. |
 | [`cascade-flow`](./skills/cascade-flow/) | Stacked-PR discipline: branch off the previous PR's head, keep diffs reviewable, merge bottom-up, render the live chain. |
 
 ### Docs & planning
