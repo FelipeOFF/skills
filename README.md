@@ -2,7 +2,7 @@
 
 A single home for all my agent skills — centralized so everything installs the same way, from one place. Built to work with **Claude Code, Codex, OpenCode, Cursor**, and every other agent supported by the open [`skills`](https://github.com/vercel-labs/skills) ecosystem.
 
-**37 skills**, installable one by one — you only ever load what the current task needs.
+**47 skills**, installable one by one — you only ever load what the current task needs.
 
 ## Catalog
 
@@ -88,6 +88,34 @@ Eight skills that work together to run an autonomous, self-correcting loop while
 | [`sleepwell-team`](./skills/sleepwell-team/) | Multi-agent PR workflow — implement → PR → review → fix → CI → merge. |
 | [`sleepwell-ci-monitor`](./skills/sleepwell-ci-monitor/) | Check CI status on each wake and persist a sentinel. |
 | [`sleepwell-telemetry`](./skills/sleepwell-telemetry/) | Collect tokens and cost with multi-LLM detection. |
+
+### Specgate: typed decisions for spec-driven delivery
+
+10 skills that take a scope from grill through research, spec and tickets to draft pull requests. They run on the Specgate client (`pipx install git+https://github.com/FelipeOFF/specgate.git`) and an MCP host, and carry no server, provider or key. Each one is byte-identical to the copy the client ships.
+
+Use one channel per skills folder. With the client, install these skills through `specgate install`, not from here: it writes the ownership marker that `specgate update` and `specgate uninstall` need, and it refuses a folder it did not write (`Destination skill <name> is not plugin-managed`), so remove copies from here before it runs. A later `skills add` over a folder the client wrote erases that marker. Install from here only when `specgate install` does not manage the folder, and install a copy with `--copy`: by default `skills` links each harness folder to `~/.agents/skills`, and the client's routing rejects a skill that resolves outside its harness folder (Claude Code), so it would select none. A copy counts as a public Specgate skill only while it is byte-identical to the skill of the installed client; edit it, or update one side alone, and a person has to choose it again.
+
+`to-spec-jev` and `to-tickets-jev` load the `to-spec` and `to-tickets` skills, which come from another source and are not in this set. Without a manifest the client keeps them in review until a person picks them, so `specgate flow` reaches draft pull requests only after that choice.
+
+Install one skill by name, with a space after `--skill` (`--skill=<skill-name>` installs the whole hub), or the whole set:
+
+```bash
+npx skills add FelipeOFF/skills --skill <skill-name> --copy
+npx skills add FelipeOFF/skills --skill specgate triage-jev grill-with-jev research-with-jev research-filter-jev to-spec-jev to-tickets-jev implement-spec-jev verify-spec-jev iterate-with-jev --copy
+```
+
+| Skill | What it does |
+| ----- | ------------ |
+| [`specgate`](./skills/specgate/) | Typed Jev decisions for software work: context, verdicts, screening and skill routing. |
+| [`triage-jev`](./skills/triage-jev/) | Move tracker issues through triage states; labels change only after the maintainer confirms. |
+| [`grill-with-jev`](./skills/grill-with-jev/) | Close scope questions from authorized evidence; only business choices and persistent gaps reach a person. |
+| [`research-with-jev`](./skills/research-with-jev/) | Collect evidence for one knowledge gap from authorized sources, after Jev picks the topic. |
+| [`research-filter-jev`](./skills/research-filter-jev/) | Filter a research packet into relevant, contradictory, rejected and repeated evidence. |
+| [`to-spec-jev`](./skills/to-spec-jev/) | Turn a finished grill into a researched, verified spec, with one consolidated review. |
+| [`to-tickets-jev`](./skills/to-tickets-jev/) | Turn an approved spec into a validated graph of vertical tickets across repositories. |
+| [`implement-spec-jev`](./skills/implement-spec-jev/) | Implement the unlocked ticket frontier in worktrees and stop at validated draft pull requests. |
+| [`verify-spec-jev`](./skills/verify-spec-jev/) | Judge a ticket's acceptance criteria against worktree evidence before the draft pull request. |
+| [`iterate-with-jev`](./skills/iterate-with-jev/) | Judge a maintainer `/iterate` comment on an agent pull request before any edit or push. |
 
 ## Install
 
