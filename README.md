@@ -97,7 +97,7 @@ Use one channel per skills folder. With the client, install these skills through
 
 `to-spec-jev` and `to-tickets-jev` load the `to-spec` and `to-tickets` skills, which come from another source and are not in this set. Without a manifest the client keeps them in review until a person picks them, so `specgate flow` reaches draft pull requests only after that choice.
 
-Install one skill by name, with a space after `--skill` (`--skill <skill-name>` installs the whole hub), or the whole set:
+Install one skill by name, with a space after `--skill` (`--skill=<skill-name>` installs the whole hub), or the whole set:
 
 ```bash
 npx skills add FelipeOFF/skills --skill <skill-name> --copy
