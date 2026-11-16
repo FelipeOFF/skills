@@ -109,7 +109,7 @@ npx skills add FelipeOFF/skills --skill specgate triage-jev deliver-with-jev gri
 | [`specgate`](./skills/specgate/) | Typed Jev decisions for software work: context, verdicts, screening and skill routing. |
 | [`triage-jev`](./skills/triage-jev/) | Move tracker issues through triage states; labels change only after the maintainer confirms. |
 | [`deliver-with-jev`](./skills/deliver-with-jev/) | Take one delivery from grill to draft pull requests in one invocation, phase by phase, resuming from the host's state. |
-| [`grill-with-jev`](./skills/grill-with-jev/) | Close scope questions from authorized evidence; only business choices and persistent gaps reach a person. |
+| [`grill-with-jev`](./skills/grill-with-jev/) | Grill the scope with the person through Matt Pocock's grill-with-docs and record the decisions for the spec; Jev takes no part. |
 | [`research-with-jev`](./skills/research-with-jev/) | Collect evidence for one knowledge gap from authorized sources, after Jev picks the topic. |
 | [`research-filter-jev`](./skills/research-filter-jev/) | Filter a research packet into relevant, contradictory, rejected and repeated evidence. |
 | [`to-spec-jev`](./skills/to-spec-jev/) | Turn a finished grill into a researched, verified spec, with one consolidated review. |
